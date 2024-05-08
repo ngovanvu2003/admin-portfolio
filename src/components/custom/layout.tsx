@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
+import { toast } from '../ui/use-toast'
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   fadedBelow?: boolean
@@ -7,20 +8,40 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
-  ({ className, fadedBelow = false, fixedHeight = false, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        'relative flex h-full w-full flex-col',
-        fadedBelow &&
-          'after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:hidden after:h-32 after:w-full after:bg-[linear-gradient(180deg,_transparent_10%,_hsl(var(--background))_70%)] after:md:block',
-        fixedHeight && 'md:h-svh',
-        className
-      )}
-      {...props}
-    />
-  )
+  ({ className, fadedBelow = false, fixedHeight = false, ...props }, ref) => {
+    React.useEffect(() => {
+      setTimeout(() => {
+        toast({
+          title: 'Thật tuyệt vời khi gặp bạn ✌︎',
+          description: (
+            <div className='mt-2  rounded-md bg-slate-950 p-4'>
+              <p className='text-white'>Hãy tự nhiên như ở nhà</p>
+              <p className='text-white'>
+                {' '}
+                Bạn cứ thoải mãi nhé cùng khám phá cùng tôi nào ❤️️
+              </p>
+            </div>
+          ),
+        })
+        console.log('hihi')
+      }, 2000)
+    }, [])
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'relative flex h-full w-full flex-col',
+          fadedBelow &&
+            'after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:hidden after:h-32 after:w-full after:bg-[linear-gradient(180deg,_transparent_10%,_hsl(var(--background))_70%)] after:md:block',
+          fixedHeight && 'md:h-svh',
+          className
+        )}
+        {...props}
+      />
+    )
+  }
 )
+
 Layout.displayName = 'Layout'
 
 const LayoutHeader = React.forwardRef<
