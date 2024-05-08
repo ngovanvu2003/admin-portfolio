@@ -10,21 +10,19 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   ({ className, fadedBelow = false, fixedHeight = false, ...props }, ref) => {
     React.useEffect(() => {
-      setTimeout(() => {
-        toast({
-          title: 'Thật tuyệt vời khi gặp bạn ✌︎',
-          description: (
-            <div className='mt-2  rounded-md bg-slate-950 p-4'>
-              <p className='text-white'>Hãy tự nhiên như ở nhà</p>
-              <p className='text-white'>
-                {' '}
-                Bạn cứ thoải mãi nhé cùng khám phá cùng tôi nào ❤️️
-              </p>
-            </div>
-          ),
-        })
-        console.log('hihi')
-      }, 2000)
+      toast({
+        title: 'Thật tuyệt vời khi gặp bạn ✌︎',
+        description: (
+          <div className='mt-2  rounded-md bg-slate-950 p-4'>
+            <p className='text-white'>Hãy tự nhiên như ở nhà</p>
+            <p className='text-white'>
+              {' '}
+              Bạn cứ thoải mãi nhé cùng khám phá cùng tôi nào ❤️️
+            </p>
+          </div>
+        ),
+      })
+      console.log('hihi')
     }, [])
     return (
       <div
